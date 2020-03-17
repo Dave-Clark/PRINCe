@@ -70,7 +70,7 @@ grep -c "^>" allSequences.fna # 1897257
 ~/bioinformatics/usearch11.0.667_i86linux32 -fastx_uniques_persample allSequences.fna -fastaout uniq_DNA_seqs.fna -minuniquesize 1 -sizeout
 
 mkdir framebotOut
-/media/dave/storage/bioinformatics/RDPTools/FrameBot.jar framebot -o framebotOut
+java -Xmx16g -jar /media/dave/storage/bioinformatics/RDPTools/FrameBot.jar framebot -o framebotOut
 /hzo -N -i 0.5 -l 40 /media/dave/storage/PRINCE/data/sequenceData/fungeneDBs/ana
 mmox_hzo/derep_hzo_seqs.fna uniq_DNA_seqs.fna
 
