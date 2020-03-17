@@ -70,8 +70,10 @@ grep -c "^>" allSequences.fna # 1897257
 ~/bioinformatics/usearch11.0.667_i86linux32 -fastx_uniques_persample allSequences.fna -fastaout uniq_DNA_seqs.fna -minuniquesize 1 -sizeout
 
 mkdir framebotOut
+/media/dave/storage/bioinformatics/RDPTools/FrameBot.jar framebot -o framebotOut
+/hzo -N -i 0.5 -l 40 /media/dave/storage/PRINCE/data/sequenceData/fungeneDBs/ana
+mmox_hzo/derep_hzo_seqs.fna uniq_DNA_seqs.fna
 
-java -Xmx16g -jar ~/bioinformatics/RDPTools/FrameBot.jar framebot -o framebotOut/nosZ_C1 -N -i 0.5 -l 60 /media/dave/storage/PRINCE/data/sequenceData/fungeneDBs/nosZ_CladeI/derep_nosZ_C1.fna uniq_DNA_seqs.fna
 
 # up to here
 # need to run through framebot once site is working
