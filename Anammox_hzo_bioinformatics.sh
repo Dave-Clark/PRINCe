@@ -74,7 +74,11 @@ java -Xmx16g -jar /media/dave/storage/bioinformatics/RDPTools/FrameBot.jar frame
 /hzo -N -i 0.5 -l 40 /media/dave/storage/PRINCE/data/sequenceData/fungeneDBs/ana
 mmox_hzo/derep_hzo_seqs.fna uniq_DNA_seqs.fna
 
+awk '{ if ($0 !~ />/) {print toupper($0)} else {print $0} }' hzo_corr_prot.fasta > uc_hzo_corr_prot.fasta
 
-# up to here
-# need to run through framebot once site is working
-# need hzo refset or use online tool
+# convert fs corrected aa sequences to upper case for usearch
+~/bioinformatics/usearch11.0.667_i86linux32 -fastx_uniques uc_hzo_corr_prot.fasta -fastaout AAVs.fasta -minuniquesize 1 -relabel AAV
+
+# convert to amino acid variant OTU table
+# might have to split into chunks and recombine afterwards
+~/bioinformatics/usearch11.0.667_i86linux32 -otutab uc_hzo_corr_prot.fasta -otus AAVs.fasta -id 1 -minsize 0 -otutabout hzo_AAV.txt -qmask none -dbmask none
