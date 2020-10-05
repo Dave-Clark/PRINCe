@@ -41,7 +41,7 @@ done
 # get read lengths for one file
 grep "^[^>]" nosZxS4x5x5CMxW_S206.fna | awk "{print length}" > seqLengths.txt
 
-# take all reads between 450 - 455 bp
+# take all reads between 200 - 210 bp
 for f in *.fna; do
 awk '!/^>/ { next } { getline seq } length(seq) >= 200 { print $0 "\n" seq }' $f | awk '!/^>/ { next } { getline seq } length(seq) <= 210 { print $0 "\n" seq }' > ${f%.fna}_len_filtered.fna
 done
